@@ -18,17 +18,17 @@ export function getConfig(): SystemConfig {
     cfGeoRestrictList: [],
     bedrock: {
       enabled: true,
-      region: SupportedRegion.US_EAST_1,
+      region: SupportedRegion.US_WEST_2,
     },
     llms: {
       // sagemaker: [SupportedSageMakerModels.FalconLite]
       sagemaker: [],
     },
     rag: {
-      enabled: false,
+      enabled: true,
       engines: {
         aurora: {
-          enabled: false,
+          enabled: true,
         },
         opensearch: {
           enabled: false,
