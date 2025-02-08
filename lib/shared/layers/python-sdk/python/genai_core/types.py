@@ -27,6 +27,12 @@ class Workspace(BaseModel):
     engine: str
 
 
+class WorkspaceStatus(Enum):
+    SUBMITTED = "submitted"
+    READY = "ready"
+    CREATING = "creating"
+
+
 class Provider(Enum):
     BEDROCK = "bedrock"
     OPENAI = "openai"
@@ -40,11 +46,13 @@ class Modality(Enum):
     TEXT = "TEXT"
     IMAGE = "IMAGE"
     EMBEDDING = "EMBEDDING"
+    VIDEO = "VIDEO"
 
 
 class InferenceType(Enum):
     ON_DEMAND = "ON_DEMAND"
     PROVISIONED = "PROVISIONED"
+    INFERENCE_PROFILE = "INFERENCE_PROFILE"
 
 
 class ModelStatus(Enum):
@@ -64,12 +72,14 @@ class Direction(Enum):
 
 class ChatbotMode(Enum):
     CHAIN = "chain"
+    IMAGE_GENERATION = "image_generation"
+    VIDEO_GENERATION = "video_generation"
 
 
 class ChatbotAction(Enum):
     HEARTBEAT = "heartbeat"
     RUN = "run"
-    LLM_NEW_TOKEN = "llm_new_token"
+    LLM_NEW_TOKEN = "llm_new_token"  # nosec B105 False positive, this is not password
     FINAL_RESPONSE = "final_response"
 
 
@@ -83,3 +93,7 @@ class Task(Enum):
     RETRIEVE = "retrieve"
     SEARCH_QUERY = "search_query"
     SEARCH_DOCUMENT = "search_document"
+
+
+class FileStorageProvider(Enum):
+    S3 = "s3"
